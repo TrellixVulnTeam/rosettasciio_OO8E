@@ -9,7 +9,6 @@ https://github.com/pypa/sampleproject
 from setuptools import setup, find_packages, Extension, Command
 import os
 import warnings
-from os import path
 
 # io.open is needed for projects that support Python 2.7
 # It ensures open() defaults to text mode with universal newlines,
@@ -26,10 +25,10 @@ import itertools
 
 from rsciio.version import __version__
 
-setup_path = path.abspath(path.dirname(__file__))
+setup_path = os.path.abspath(os.path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(setup_path, "README.md"), encoding="utf-8") as f:
+with open(os.path.join(setup_path, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 # Extensions. Add your extension here:
@@ -67,7 +66,7 @@ def cythonize_extensions(extensions):
     try:
         from Cython.Build import cythonize
 
-        return cythonize(extensions)
+        return cythonize(extensions, language_level="3")
     except ImportError:
         warnings.warn(
             """WARNING: cython required to generate fast c code is not found on this system.
@@ -149,7 +148,7 @@ class Recythonize(Command):
 
         global raw_extensions
         global extensions
-        cythonize(extensions)
+        cythonize(extensions, language_level="3")
 
 
 install_requires = [
