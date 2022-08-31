@@ -237,7 +237,7 @@ def _read_serie(
         dt = None
         try:
             dt = datetime.strptime(op["DateTime"], "%Y:%m:%d %H:%M:%S")
-        except:
+        except Exception:
             try:
                 if "ImageDescription" in op:
                     # JEOL SightX.
@@ -249,7 +249,7 @@ def _read_serie(
                     dt = None
                 else:
                     dt = datetime.strptime(op["DateTime"], "%Y/%m/%d %H:%M")
-            except:
+            except Exception:
                 _logger.info("Date/Time is invalid : " + op["DateTime"])
         if dt is not None:
             md["General"]["date"] = dt.date().isoformat()

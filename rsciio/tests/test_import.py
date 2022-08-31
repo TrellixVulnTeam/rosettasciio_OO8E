@@ -37,28 +37,28 @@ def test_import_all():
     # Remove plugins which requires optional dependencies, which is installed
     try:
         import skimage
-    except:
+    except Exception:
         plugin_name_to_remove.append("Blockfile")
 
     try:
         import mrcz
-    except:
+    except Exception:
         plugin_name_to_remove.append("MRCZ")
 
     try:
         import tifffile
-    except:
+    except Exception:
         plugin_name_to_remove.append("TIFF")
         plugin_name_to_remove.append("Phenom Element Identification (ELID)")
 
     try:
         import pyUSID
-    except:
+    except Exception:
         plugin_name_to_remove.append("USID")
 
     try:
         import zarr
-    except:
+    except Exception:
         plugin_name_to_remove.append("ZSpy")
 
     IO_PLUGINS = list(

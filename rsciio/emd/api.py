@@ -354,7 +354,7 @@ class EMD_NCEM:
                 try:
                     units = _UREG.parse_units(value)
                     value = f"{units:~}"
-                except:
+                except Exception:
                     pass
         return value
 

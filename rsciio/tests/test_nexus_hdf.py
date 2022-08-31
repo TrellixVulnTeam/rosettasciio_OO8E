@@ -111,7 +111,7 @@ class TestDLSNexus:
     def test_save_hspy(self, tmp_path):
         try:
             self.s.save(tmp_path / "test.hspy")
-        except:
+        except Exception:
             pytest.fail("unexpected error saving hdf5")
 
     @pytest.mark.parametrize(
@@ -188,7 +188,7 @@ class TestDLSNexusNoAxes:
     def test_save_hspy(self, tmp_path):
         try:
             self.s.save(tmp_path / "test.hspy")
-        except:
+        except Exception:
             pytest.fail("unexpected error saving hdf5")
 
 
