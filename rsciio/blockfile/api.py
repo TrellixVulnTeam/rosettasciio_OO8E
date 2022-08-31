@@ -224,7 +224,7 @@ def file_reader(filename, endianess="<", mmap_mode=None, lazy=False, **kwds):
     # It seems it uses "\x00" for padding, so we remove it
     try:
         header["Note"] = note.decode("latin1").strip("\x00")
-    except BaseException:
+    except Exception:
         # Not sure about the encoding so, if it fails, we carry on
         _logger.warning(
             "Reading the Note metadata of this file failed. "
